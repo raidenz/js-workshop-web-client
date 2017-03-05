@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ChatWindow from '../components/ChatWindow';
-import Navbar from '../components/Navbar';
+import { ChatWindow, Navbar } from '../components';
 
 class Chat extends Component {
   onLogOut() {

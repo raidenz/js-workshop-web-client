@@ -2,38 +2,8 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
-
+import messages from '../lib/reducer';
 import { askQuestion } from '../lib/request';
-
-const preDefinedMessages = [
-  {
-    author: 'Bot',
-    text: 'Hello there! You can ask me to remember what will you do',
-    createdAt: moment().local().format(),
-  }
-];
-
-/**
- * ChatWindow initial state
- * @type {Object}
- */
-const initialState = { messages: preDefinedMessages };
-
-/**
- * Simple Reducer for messages state.
- * It handles state change.
- * @param  {Object} state
- * @param  {Object} action
- * @return {Object}
- */
-const messages = (state = initialState, action) => {
-  switch (action.type) {
-    case 'ADD_MESSAGE':
-      return { messages: state.messages.concat(action.message) };
-    default:
-      return state;
-  }
-};
 
 export default class ChatWindow extends Component {
   constructor() {
@@ -67,7 +37,7 @@ export default class ChatWindow extends Component {
    * @param  {String} messageText
    */
   onMessageSubmit(messageText) {
-    const message = { text: messageText, author: 'Me', createdAt: moment() };
+    const message = { text: messageText, author: 'Me', createdAt: moment().format() };
     this.dispatch({
       type: 'ADD_MESSAGE',
       message,

@@ -18,7 +18,7 @@ export const askQuestion = (message) => {
       return {
         text: data.answer,
         author: 'Bot',
-        createdAt: moment().local().format(),
+        createdAt: moment().format(),
       };
     })
 };
